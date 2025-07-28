@@ -1,0 +1,57 @@
+import java.util.Scanner;
+class Node {
+    int data;
+    Node next;
+
+    Node(int data) {
+        this.data = data;
+        this.next = null;
+    }
+}
+class Main {
+    Node head;
+    public void add(int data) {
+        Node newNode = new Node(data);
+        if (head == null) {
+            head = newNode;
+        } else {
+            Node current = head;
+            while (current.next != null) {
+                current = current.next;
+            }
+            current.next = newNode;
+        }
+    }
+    public void display()
+    {
+        if (head == null)
+        {
+            System.out.println("Empty");
+            return;
+        }
+        Node current = head;
+        while (current != null)
+        {
+            System.out.print(current.data + " -> ");
+            current = current.next;
+        }
+        System.out.println("null");
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        Main l1 = new Main();
+        System.out.print("Size: ");
+        int n = sc.nextInt();
+
+        System.out.println("Enter " + n + " integers:");
+        for (int i = 0; i < n; i++) {
+            int data = sc.nextInt();
+            l1.add(data);
+        }
+        System.out.println("Your linked list:");
+        l1.display();
+        sc.close();
+    }
+}
+
